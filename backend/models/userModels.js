@@ -26,14 +26,6 @@ const userSchema = sequelize.define('User', {
   }
 });
 // Synchronisation avec la base de données
-(async () => {
-  try {
-    await sequelize.sync();
-    console.log('Table "Users" créée avec succès.');
-  } catch (error) {
-    console.error('Erreur lors de la création de la table "Users":', error);
-  }
-})();
 //micheck hoe mi-existe ve ilay mail, ary true ve ilay mdp
 userSchema.statics.checkUser = async(userData, password) =>{
     if(!userData) {
