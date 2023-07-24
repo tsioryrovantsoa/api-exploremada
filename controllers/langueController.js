@@ -17,6 +17,36 @@ class LangueController extends BaseController{
         }
     }
 
+    createLangue = async(req,res) => {
+        try{
+            this.resOk(res,await this.langueService.create(req.body),"Creation langue avec success")
+        }catch(error){
+            console.log(error);
+            this.resKo(res,error.message);
+        }
+    }
+
+    updateLangue = async(req,res) => {
+        try {
+            console.log(req.params);
+            const langue = await this.langueService.update(req.body, req.params.id);
+            this.resOk(res, langue, "langue modifié avec succès");
+        } catch (error) {
+            console.log(error);
+            this.resKo(res, error.message); 
+        }
+    }
+
+    deleteSalle = async (req, res) => {
+        try {
+            const langue = await this.langueService.delete(req.body);
+            this.resOk(res, langue, "Langue supprimer avec succès");
+        } catch (error) {
+            console.log(error);
+            this.resKo(res, error.message); 
+        }
+    }
+
 }
 
 module.exports = LangueController;

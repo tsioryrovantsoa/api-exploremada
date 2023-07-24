@@ -11,7 +11,8 @@ const LangueModel = sequelize.define(
       },
     nom: {
       allowNull: false,
-      type: DataTypes.STRING(50)
+      type: DataTypes.STRING(50),
+      
     },
   },
   {
