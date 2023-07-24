@@ -13,7 +13,7 @@ class LangueController extends BaseController{
             this.resOk(res,await this.langueService.getAll(),"Liste des langues faite avec success")
         }catch(error){
             console.log(error);
-            this.resKo(res,error.message);
+            this.resKo(res,error);
         }
     }
 
@@ -22,7 +22,7 @@ class LangueController extends BaseController{
             this.resOk(res,await this.langueService.create(req.body),"Creation langue avec success")
         }catch(error){
             console.log(error);
-            this.resKo(res,error.message);
+            this.resKo(res,error);
         }
     }
 
@@ -33,7 +33,7 @@ class LangueController extends BaseController{
             this.resOk(res, langue, "langue modifié avec succès");
         } catch (error) {
             console.log(error);
-            this.resKo(res, error.message); 
+            this.resKo(res, error); 
         }
     }
 
@@ -43,7 +43,7 @@ class LangueController extends BaseController{
             this.resOk(res, langue, "Langue supprimer avec succès");
         } catch (error) {
             console.log(error);
-            this.resKo(res, error.message); 
+            this.resKo(res, error); 
         }
     }
 

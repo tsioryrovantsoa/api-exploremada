@@ -1,3 +1,5 @@
+const { Sequelize } = require("sequelize")
+
 class BaseController {
      
     resOk = (res,data,message,statue = "ok") => {
@@ -5,7 +7,11 @@ class BaseController {
      }
      
     resKo = (res,message, statue = "ko") => {
-        return res.status(500).send({statue, message})
+        console.log('ici', JSON.stringify(message));
+        if(message instanceof Sequelize.ValidationError){
+            return res.status(500).send({statue, message : message.errors[0].message})
+        }
+        return res.status(500).send({statue, message: message.message})
      }
      
 }

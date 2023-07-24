@@ -12,13 +12,6 @@ class LangueService{
 
     create = async(data) => {
         try {
-            if(!data.nom) throw new Error("Champ obligatoire");
-            const langue = await LangueModel.findOne({
-                where: {
-                    nom : data.nom
-                }
-            });
-            if(langue) throw new Error('Le nom existe deja');
             const newlangue = await LangueModel.create(data);
             return newlangue;
         } catch (error) {
@@ -28,13 +21,6 @@ class LangueService{
 
     update = async(data,id) => {
         try{
-            if(!data.nom) throw new Error("Champ obligatoire");
-            const verify_langue = await LangueModel.findOne({
-                where: {
-                    nom : data.nom
-                }
-            });
-            if(verify_langue) throw new Error('Le nom existe deja');
             const langue = await LangueModel.findByPk(id);
             if(!langue) throw new Error("Salle not found")
             langue.nom = data.nom;
