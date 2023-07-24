@@ -1,7 +1,9 @@
-create table Langue(
-	id varchar(100) constraint langue_pk primary key,
-	nom varchar(50)
+create table langue(
+	id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+	nom varchar(50) NOT NULL
 );
+
+INSERT INTO langue VALUES (NULL, 'fr'),(NULL,'en');
 
 create table Utilisateur(
 	id varchar(100) constraint utilisateur_pk primary key,
