@@ -2,6 +2,11 @@
 --sedra2022
 INSERT INTO utilisateur
 (id, nom, email, motdepasse, id_langue, contact)
+VALUES(2, 'sedra', 'sedra23@gmail.com', '$2a$10$skVjtMZRhmxxzKXeSwHYMOOZXvF2oNaFxrmuRaigdlvF6eTfmqApG', 1, '0347808955');
+
+--sedra2022
+INSERT INTO utilisateur
+(id, nom, email, motdepasse, id_langue, contact)
 VALUES(5, 'sarah', 'sandatia104555@gmail.com', '$2a$10$g7MVn4GpP6ImBsHBa13bL.zhpsyVnHssY5rXbHf999GDpRMn23s7y', 1, '0347808955');
 
 --1234
