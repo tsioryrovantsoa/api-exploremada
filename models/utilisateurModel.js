@@ -52,6 +52,20 @@ const utilisateurModel = sequelize.define(
         },
       }
     },
+    
+    id_langue: {
+      allowNull: false,
+      type: DataTypes.INTEGER,
+      unique:false,
+      validate: {
+        notNull: {
+          msg: "langue est obligatoire"
+        },
+        notEmpty: {
+          msg: "langue ne doit pas etre vide"
+        },
+      }
+    },
     contact: {
       allowNull: true,
       type: DataTypes.STRING(50),
@@ -63,7 +77,7 @@ const utilisateurModel = sequelize.define(
         }
       }
     }
-  } 
+  },
 
 
   {
