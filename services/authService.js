@@ -15,8 +15,8 @@ class AuthService{
             throw new Error('Invalid password');
         }
 
-        const token = jwt.sign({ userId: user.id }, process.env.SECRET_KEY, {
-            expiresIn: process.env.EXPIRE_TOKEN, 
+        const token = jwt.sign({ userId: user.id }, 'exploremada', {
+            expiresIn: '1h', 
           });
       
         return token;

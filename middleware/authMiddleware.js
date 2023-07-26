@@ -20,7 +20,7 @@ const authMiddleware = (req, res, next) => {
     return res.status(401).json({statue : "ko",  message: 'Token blacklisted' });
   }
 
-  jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
+  jwt.verify(token, 'exploremada', (err, decoded) => {
     if (err) {
       return res.status(401).send({statue : "ko", message: "Invalid token"});
     }
