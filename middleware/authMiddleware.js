@@ -7,17 +7,17 @@ const authMiddleware = (req, res, next) => {
   const authorizationHeader = req.headers.authorization;
 
   if (!authorizationHeader) {
-    return res.status(401).json({statue : "ko",  error: 'No token provided' });
+    return res.status(401).json({statue : "ko",  message: 'No token provided' });
   }
 
   const [bearer, token] = authorizationHeader.split(' ');
 
   if (bearer !== 'Bearer' || !token) {
-    return res.status(401).json({statue : "ko",  error: 'Invalid token format' });
+    return res.status(401).json({statue : "ko",  message: 'Invalid token format' });
   }
 
   if (authservice.isTokenBlacklisted(token)) {
-    return res.status(401).json({statue : "ko",  error: 'Token blacklisted' });
+    return res.status(401).json({statue : "ko",  message: 'Token blacklisted' });
   }
 
   jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
