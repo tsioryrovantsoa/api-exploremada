@@ -1,4 +1,4 @@
-const Lieu_imageController = require("../controllers/Lieu_imageController");
+const Lieu_imageController = require("../controllers/lieu_imageController");
 const express = require('express');
 const router = express.Router();
 
