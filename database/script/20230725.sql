@@ -18,3 +18,12 @@ VALUES(6, 'Tsiory', 'tsiory@gmail.com', '$2a$10$JpG1s4oj9tcD8ADnEY/ioucPGMPDQHSR
 INSERT INTO utilisateur
 (id, nom, email, motdepasse, id_langue, contact)
 VALUES(7, 'charle', 'charle@gmail.com', '$2a$10$yf6powlqhG7CRX/GXneUBeMKLv5qWYgjF2YwjpcM1kAd4zEHcOpga', 1, '0343456788');
+
+
+-- Ajouter la contrainte UNIQUE sur la colonne "email"
+ALTER TABLE utilisateur
+ADD CONSTRAINT unique_email UNIQUE (email);
+
+-- Définir la valeur par défaut pour la colonne "id_langue"
+ALTER TABLE utilisateur
+ALTER COLUMN id_langue SET DEFAULT 1;
