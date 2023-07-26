@@ -2,6 +2,7 @@ const utilisateurModel = require("../models/utilisateurModel")
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
+const blacklistedTokens = new Set();
 class AuthService{
 
     signIn = async(email, motdepasse) => {
@@ -20,6 +21,14 @@ class AuthService{
       
         return token;
     }
+    signOut = async(token) => {
+        blacklistedTokens.add(token);
+    }
+
+    isTokenBlacklisted = (token) => {
+        return blacklistedTokens.has(token);
+    }
+
 }
 
 module.exports = AuthService;

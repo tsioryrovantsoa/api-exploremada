@@ -17,6 +17,24 @@ class AuthController extends BaseController{
             this.resKo(res,error);
         }
     }
+
+    getMe = async(req,res) => {
+        try {
+            this.resOk(res,req.userId,"Moi")
+        } catch (error) {
+            this.resKo(res,error);
+        }
+    }
+
+    signOut = async(req,res) => {
+        try {
+            this.authService.signOut(req.userToken);
+            this.resOk(res,{},"Utilisateur deconnecter");
+        } catch (error) {
+            console.log(error);
+            this.resKo(res,error);
+        }
+    }
 }
 
 module.exports = AuthController;
