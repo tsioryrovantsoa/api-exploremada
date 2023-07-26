@@ -6,6 +6,8 @@ const sequelize = require("./database/connexionDB");
 const morgan = require("morgan");
 const langueRouter = require('./routes/langueRoute');
 const utilisateurRouter = require('./routes/utilisateurRoute');
+const lieu_imageRouter = require('./routes/lieu_imageRoute');
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -25,6 +27,7 @@ app.use((req, res, next) => {
 
 app.use('/langues',langueRouter);
 app.use('/utilisateur',utilisateurRouter);
+app.use('/lieu_image',lieu_imageRouter);
 app.use((req, res, next) => {
     res.status(404).send({statue : "ko", message: "Route introuvable"})
 });
