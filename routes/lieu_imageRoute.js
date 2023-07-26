@@ -7,6 +7,6 @@ const controller = new Lieu_imageController();
 router.get('/',controller.getAllLieu_image);
 router.post('/',controller.createLieu_image);
 router.put('/:id',controller.updateLieu_image);
-router.delete('/', controller.deleteSalle);
+// router.delete('/', controller.deleteSalle);
 
 module.exports = router;

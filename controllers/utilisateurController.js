@@ -1,4 +1,3 @@
-const bcrypt = require('bcryptjs');
 const UtilisateurService = require("../services/utilisateurService");
 const BaseController = require("./baseController");
 // inscription

@@ -7,6 +7,7 @@ const morgan = require("morgan");
 const langueRouter = require('./routes/langueRoute');
 const utilisateurRouter = require('./routes/utilisateurRoute');
 const lieu_imageRouter = require('./routes/lieu_imageRoute');
+const authRoute = require('./routes/authRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -28,6 +29,8 @@ app.use((req, res, next) => {
 app.use('/langues',langueRouter);
 app.use('/utilisateur',utilisateurRouter);
 app.use('/lieu_image',lieu_imageRouter);
+app.use('/login',authRoute);
+
 app.use((req, res, next) => {
     res.status(404).send({statue : "ko", message: "Route introuvable"})
 });
