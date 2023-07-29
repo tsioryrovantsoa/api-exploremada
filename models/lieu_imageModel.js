@@ -24,7 +24,7 @@ const Lieu_imageModel = sequelize.define(
     },
     image: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(50),
         unique:false,
         validate: {
           notNull: {
