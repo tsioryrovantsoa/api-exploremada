@@ -9,6 +9,7 @@ const utilisateurRouter = require('./routes/utilisateurRoute');
 const lieu_imageRouter = require('./routes/lieu_imageRoute');
 const authRoute = require('./routes/authRoute');
 const lieuRoute = require('./routes/lieuRoute');
+const notificationRoute = require('./routes/notificationRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,6 +33,7 @@ app.use('/langues',langueRouter);
 app.use('/utilisateur',utilisateurRouter);
 app.use('/lieu_image',lieu_imageRouter);
 app.use('/auth',authRoute);
+app.use('/notification',notificationRoute);
 
 app.use((req, res, next) => {
     res.status(404).send({statue : "ko", message: "Route introuvable"})

@@ -22,3 +22,7 @@ ALTER TABLE `lieu` ADD UNIQUE(`nom`);
 ALTER TABLE `lieu` ADD UNIQUE(`latitude`, `longitude`);
 
 ALTER TABLE `lieu` CHANGE `is_populaire` `is_populaire` TINYINT(1) NULL DEFAULT '1';
+
+INSERT INTO `notification` (`id`, `id_utilisateur`, `contenu`) VALUES (NULL, '5', 'Vous avez une notification.');
+
+INSERT INTO `notification` (`id`, `id_utilisateur`, `contenu`) VALUES (NULL, '6', 'Bonjour Tsiory');
