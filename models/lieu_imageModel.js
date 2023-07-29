@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../database/connexionDB");
 
 const Lieu_imageModel = sequelize.define(
-  "lieu",
+  "lieu_image",
   {
     id: {
         type: DataTypes.INTEGER,
