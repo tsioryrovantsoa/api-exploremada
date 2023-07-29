@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const utilisateurModel = require("../models/utilisateurModel");
+const UtilisateurModel = require("../models/utilisateurModel");
 class UtilisateurService{
 
     create = async(data) => {
@@ -11,11 +11,49 @@ class UtilisateurService{
             }
 
             data.motdepasse=await bcrypt.hash(motdepasse, 10);
-            const newutilisateur = await utilisateurModel.create(data);
+            const newutilisateur = await UtilisateurModel.create(data);
             
             return newutilisateur;
         } catch (error) {
             throw error;
+        }
+    }
+    getAll = async() =>{
+        try{
+            return await UtilisateurModel.findAll();
+        }catch(error){
+            throw error;
+        }
+    }
+
+
+    update = async(data,id) => {
+        try{
+            const utilisateur = await UtilisateurModel.findByPk(id);
+            if(!utilisateur) throw new Error("user not found");
+            for (const key in data) {
+                if (key in utilisateur) {
+                  utilisateur[key] = data[key];
+                }
+              }
+            await utilisateur.save();
+            return utilisateur;
+        }catch(error){
+            throw error;
+        }
+    }
+
+    delete = async(data)=>{
+        try {
+            const id = data.id;
+            const deleteutilisateur = await UtilisateurModel.destroy({ where: { id }});
+            if (deleteutilisateur){
+                return true
+            } else{
+                throw new Error("user not found");
+            }
+        } catch (error) {
+            throw error
         }
     }
 
