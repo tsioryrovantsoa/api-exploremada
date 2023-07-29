@@ -8,6 +8,7 @@ const langueRouter = require('./routes/langueRoute');
 const utilisateurRouter = require('./routes/utilisateurRoute');
 const lieu_imageRouter = require('./routes/lieu_imageRoute');
 const authRoute = require('./routes/authRoute');
+const lieuRoute = require('./routes/lieuRoute');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/lieu',lieuRoute);
 app.use('/langues',langueRouter);
 app.use('/utilisateur',utilisateurRouter);
 app.use('/lieu_image',lieu_imageRouter);
