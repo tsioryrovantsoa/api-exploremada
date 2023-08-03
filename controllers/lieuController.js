@@ -1,3 +1,4 @@
+const multer = require("multer");
 const LieuService = require("../services/lieuService");
 const BaseController = require("./baseController");
 
@@ -22,6 +23,10 @@ class LieuController extends BaseController{
             req.body.image_miniature = req.file ? req.file.filename : null;
             this.resOk(res,await this.lieuService.create(req.body),"Creation lieu avec success")
         }catch(error){
+            console.log('=====> error:', error);
+            if (err instanceof multer.MulterError) {
+                res.status(400).json({ message: 'Une erreur est survenue lors du téléchargement du fichier.' });
+              }
             console.log(error);
             this.resKo(res,error);
         }

@@ -3,12 +3,13 @@ const path = require('path');
 require('dotenv').config();
 
 const customFileFilter = (allowedExtensions) => (req, file, cb) => {
+    console.log('allowedExtensions ===> ',allowedExtensions);
   const ext = path.extname(file.originalname).toLowerCase();
   if (allowedExtensions.includes(ext)) {
     cb(null, true);
   } else {
-    const error = new Error('Type de fichier non autorisé.');
-    cb(error);
+    cb(new Error('fichier non autorisé.'));
+    // console.log('cb=====>',cb.error);
   }
 };
 
@@ -20,6 +21,7 @@ destination,
     const ext = path.extname(file.originalname);
     const filename = file.fieldname + '-' + uniqueSuffix + ext;
     cb(null, filename);
+    console.log('destination ===> ',destination);
   },
 });
 
