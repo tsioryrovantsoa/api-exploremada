@@ -29,6 +29,7 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use('/uploads', express.static('uploads'));
 app.use('/lieu',lieuRoute);
 app.use('/langues',langueRouter);
 app.use('/utilisateur',utilisateurRouter);
