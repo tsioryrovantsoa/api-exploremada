@@ -31,4 +31,4 @@ const uploadWithCustomOptions = (allowedExtensions, destination, fieldName) =>
     fileFilter: customFileFilter(allowedExtensions),
     }).single(fieldName);
 
-module.exports = (allowedExtensions, destination, fieldName) => uploadWithCustomOptions(allowedExtensions,  process.env.UPLOAD_PATH+destination, fieldName);
+module.exports = (allowedExtensions, destination, fieldName) => uploadWithCustomOptions(allowedExtensions,  'uploads/'+destination, fieldName);

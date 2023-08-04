@@ -54,8 +54,8 @@ sequelize
   .then(() => {
     console.log("Les modèles sont synchronisés avec la base de données.");
 
-    app.listen(process.env.PORT, () => {
-      console.log(`Le serveur s'exécute sur le port ${process.env.PORT}`);
+    app.listen(5000, () => {
+      console.log(`Le serveur s'exécute sur le port 5000`);
     });
   })
   .catch((error) => {
