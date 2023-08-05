@@ -7,8 +7,9 @@ const controller = new FavorisController();
 
 router.get('/',controller.getAllFavoris);
 router.get('/mesFavoris', authMiddleware, controller.getByUserFavoris);
-router.post('/',controller.createFavoris);
+router.get('/me', authMiddleware, controller.getLieuByUserFavoris);
+router.post('/',authMiddleware,controller.createFavoris);
 router.put('/:id',controller.updateFavoris);
- router.delete('/', controller.deleteFavoris);
+router.delete('/',authMiddleware, controller.deleteFavoris);
 
 module.exports = router;

@@ -26,6 +26,14 @@ class UtilisateurService{
         }
     }
 
+        getById = async(id) =>{
+        try{
+            return await UtilisateurModel.findByPk(id);
+        }catch(error){
+            throw error;
+        }
+    }
+
 
     update = async(data,id) => {
         try{

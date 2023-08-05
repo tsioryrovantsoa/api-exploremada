@@ -26,8 +26,18 @@ class FavorisController extends BaseController{
         }
     }
 
+    getLieuByUserFavoris = async(req,res) => {
+        try{
+            this.resOk(res,await this.favorisService.getMyFavorites(req.userId),"Liste des favoris de l'utilisateur faite avec success")
+        }catch(error){
+            console.log(error);
+            this.resKo(res,error);
+        }
+    }
+
     createFavoris = async(req,res) => {
         try{
+            req.body.id_utilisateur = req.userId;
             this.resOk(res,await this.favorisService.create(req.body),"Creation favoris avec success")
         }catch(error){
             console.log(error);
@@ -48,7 +58,7 @@ class FavorisController extends BaseController{
 
     deleteFavoris = async (req, res) => {
         try {
-            const favoris = await this.favorisService.delete(req.body);
+            const favoris = await this.favorisService.delete(req.body, req.userId);
             this.resOk(res, favoris, "Favoris supprimer avec succès");
         } catch (error) {
             console.log(error);

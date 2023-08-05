@@ -34,6 +34,8 @@ class Lieu_libService{
             
             if (order) {
                 options.order = [Sequelize.literal(order)];
+            }else{
+                options.order = Sequelize.literal('RAND()');
             }
 
             const lieux = await Lieu_libModel.findAll(options);

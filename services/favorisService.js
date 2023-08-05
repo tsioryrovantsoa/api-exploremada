@@ -1,5 +1,6 @@
 const FavorisModel = require("../models/favorisModel");
-
+const db = require("../database/connexionDB");
+const { QueryTypes } = require('sequelize');
 class FavorisService{
 
     getAll = async() =>{
@@ -9,6 +10,25 @@ class FavorisService{
             throw error;
         }
     }
+
+    getMyFavorites = async(id_utilisateur) => {
+        try {
+            const favoris = await db.query(
+                `SELECT ll.id, ll.nom, ll.description_courte, ll.image_miniature, ll.id_type_lieu, ll.nom_typelieu, ll.id_ville, ll.nom_ville, ll.is_populaire
+                 FROM lieu_lib ll
+                 JOIN favoris f ON ll.id = f.id_lieu
+                 WHERE f.id_utilisateur = :id_utilisateur`,
+                {
+                  type: QueryTypes.SELECT,
+                  replacements: { id_utilisateur },
+                }
+              );
+            return favoris;
+        } catch (error) {
+            throw error;
+        }
+    }
+
         getByUser = async(id_utilisateur) =>{
         try{
             return await FavorisModel.findAll({
@@ -45,10 +65,10 @@ class FavorisService{
         }
     }
 
-    delete = async(data)=>{
+    delete = async(data,id_utilisateur)=>{
         try {
-            const id = data.id;
-            const deletefavoris = await FavorisModel.destroy({ where: { id }});
+            const id_lieu = data.id_lieu;
+            const deletefavoris = await FavorisModel.destroy({ where: { id_lieu, id_utilisateur }});
             if (deletefavoris){
                 return true
             } else{

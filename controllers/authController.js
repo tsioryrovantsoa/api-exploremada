@@ -1,4 +1,5 @@
 const AuthService = require("../services/authService");
+const UtilisateurService = require("../services/utilisateurService");
 const BaseController = require("./baseController");
 
 class AuthController extends BaseController{
@@ -20,7 +21,7 @@ class AuthController extends BaseController{
 
     getMe = async(req,res) => {
         try {
-            this.resOk(res,req.userId,"Moi")
+            this.resOk(res, await new UtilisateurService().getById(req.userId),"Moi")
         } catch (error) {
             this.resKo(res,error);
         }

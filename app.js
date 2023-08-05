@@ -13,6 +13,7 @@ const notificationRoute = require('./routes/notificationRoute');
 const lieu_htmlRoute =require('./routes/lieu_htmlRoute');
 const favorisRoute =require('./routes/favorisRoute');
 const lieu_videoRoute = require('./routes/lieu_videoRoute');
+const imageRoute = require('./routes/imageRoute');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
@@ -40,6 +41,7 @@ app.use('/auth',authRoute);
 app.use('/notification',notificationRoute);
 app.use('/lieu_html',lieu_htmlRoute);
 app.use('/favoris',favorisRoute);
+app.use('/explore',imageRoute);
 
 app.use((req, res, next) => {
     res.status(404).send({statue : "ko", message: "Route introuvable"})
