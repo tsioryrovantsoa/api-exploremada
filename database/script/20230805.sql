@@ -6,7 +6,7 @@ SELECT ll.*,
 FROM lieu_lib ll
     LEFT JOIN favoris f ON ll.id = f.id_lieu
     AND f.id_utilisateur = 2;
-CREATE VIEW vue_id_image AS
+CREATE VIEW vue_image AS
 SELECT id,
     image_miniature AS image
 FROM lieu
