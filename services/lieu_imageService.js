@@ -12,6 +12,10 @@ class Lieu_imageService{
 
     create = async(data) => {
         try {
+            console.log(data);
+            if(!data.image){
+                throw new Error("L'image est requise pour l'ajout d'un image dans <un></un> lieu.");
+            }
             const newlieu_image = await Lieu_imageModel.create(data);
             return newlieu_image;
         } catch (error) {

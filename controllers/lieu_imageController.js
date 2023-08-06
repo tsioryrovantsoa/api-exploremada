@@ -19,6 +19,7 @@ class Lieu_imageController extends BaseController{
 
     createLieu_image = async(req,res) => {
         try{
+            req.body.image = req.file ? req.file.filename : null;
             this.resOk(res,await this.lieu_imageService.create(req.body),"Creation lieu_image avec success")
         }catch(error){
             console.log(error);
